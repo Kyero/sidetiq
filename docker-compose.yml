@@ -1,0 +1,22 @@
+version: "2"
+
+volumes:
+  sidetiq-sync: { external: true }
+  sidetiq-bundle: { driver: local }
+  sidetiq-config: { driver: local }
+
+services:
+  sidetiq:
+    image: kyero/ruby:2.6.3
+    working_dir: /app
+    volumes:
+      - "sidetiq-sync:/app:nocopy"
+      - "sidetiq-bundle:/bundle"
+      - "sidetiq-config:/config"
+    environment:
+      REDIS_URL: "redis://redis"
+    links:
+      - redis
+
+  redis:
+    image: redis:3.2.4

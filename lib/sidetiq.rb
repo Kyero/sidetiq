@@ -22,6 +22,9 @@ require 'sidetiq/schedule'
 require 'sidetiq/schedulable'
 require 'sidetiq/version'
 
+require 'active_support/core_ext/string/inflections'
+require 'active_support/core_ext/hash/keys'
+
 # middleware
 require 'sidetiq/middleware/history'
 
